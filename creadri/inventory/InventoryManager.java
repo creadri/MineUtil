@@ -70,26 +70,22 @@ public class InventoryManager {
         inv.clear();
     }
     
-    public static HashMap<Integer,ItemStack> getInventoryContent(Inventory inv) {
-        HashMap<Integer,ItemStack> save = new HashMap<Integer, ItemStack>();
+    public static SavedInventory getInventoryContent(Inventory inv) {
         
         int imax = inv.getSize();
+        SavedInventory save = new SavedInventory(imax);
         for (int i = 0; i < imax; i++) {
-            ItemStack is = inv.getItem(i);
-            ItemStack newis = new ItemStack(is.getTypeId(), is.getAmount(), is.getDurability());
-            newis.setData(is.getData());
-            save.put(i, newis);
+            save.setItem(i, inv.getItem(i));
         }
         
         return save;
     }
     
-    public static void setInventoryContent(HashMap<Integer,ItemStack> hm, Inventory inv) {
-        Iterator<Entry<Integer,ItemStack>> it = hm.entrySet().iterator();
-        
-        while (it.hasNext()) {
-            Entry<Integer,ItemStack> entry = it.next();
-            inv.setItem(entry.getKey().intValue(), entry.getValue());
+    public static void setInventoryContent(SavedInventory save, Inventory inv) {
+
+        int imax = Math.min(save.getSize(), inv.getSize());
+        for (int i = 0; i < imax; i++) {
+            inv.setItem(i, save.getNewStackFrom(i));
         }
     }
 
