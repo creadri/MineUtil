@@ -1,9 +1,8 @@
-package creadri.inventory;
+package com.creadri.util.inventory;
 
-import creadri.exceptions.InventoryError;
+
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -20,11 +19,12 @@ public class InventoryManager {
         inv.addItem(new ItemStack(typeId, quantity, damageId));
     }
     
-    public static void giveItemSecure(Inventory inv, int typeId, short damageId, int quantity) throws InventoryError {
+    public static boolean giveItemSecure(Inventory inv, int typeId, short damageId, int quantity) {
         if (!hasSpaceFor(inv, typeId, damageId, quantity)) {
-            throw new InventoryError("Not enough place in inventory");
+            return false;
         }
         inv.addItem(new ItemStack(typeId, quantity, damageId));
+        return true;
     }
     
     public static void giveOrDropItem(Player player, int typeId, short damageId, int quantity) {
@@ -89,7 +89,7 @@ public class InventoryManager {
         }
     }
 
-    public static boolean isDamagable(int id) {
+    public static boolean isTool(int id) {
         if (id >= 267 && id <= 286) {
             return true;
         } else if (id >= 290 && id <= 294) {

@@ -1,6 +1,7 @@
-package creadri.util;
+package com.creadri.util;
 
 import java.io.Serializable;
+import org.bukkit.Location;
 
 /**
  *
@@ -54,10 +55,15 @@ public class Position implements Comparable<Position>, Serializable {
         this.z = z;
     }
     
+    public int compareTo(Location location) {
+        return (this.x - location.getBlockX()) + (this.y - location.getBlockY()) + (this.z - location.getBlockZ()) + this.world.compareTo(location.getWorld().getName());
+    }
+    
     public int compareTo(int x, int y, int z, String world) {
         return (this.x - x) + (this.y - y) + (this.z - z) + this.world.compareTo(world);
     }
 
+    @Override
     public int compareTo(Position o) {
         return (this.x - o.x) + (this.y - o.y) + (this.z - o.z) + this.world.compareTo(world);
     }

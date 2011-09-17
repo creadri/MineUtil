@@ -1,5 +1,6 @@
-package creadri.util;
+package com.creadri.util;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -7,7 +8,7 @@ import java.util.HashMap;
  *
  * @author creadri
  */
-public class PositionMap<T> {
+public class PositionMap<T> implements Serializable{
     private HashMap<Position, T> map;
     private Position position;
     

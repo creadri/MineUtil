@@ -1,12 +1,13 @@
-package creadri.inventory;
+package com.creadri.util.inventory;
 
+import java.io.Serializable;
 import org.bukkit.inventory.ItemStack;
 
 /**
  *
  * @author creadri
  */
-public class SavedInventory {
+public class SavedInventory implements Serializable {
 
     private int[] typeIds;
     private short[] damageIds;
@@ -40,5 +41,29 @@ public class SavedInventory {
 
     public int getSize() {
         return size;
+    }
+
+    public short[] getDamageIds() {
+        return damageIds;
+    }
+
+    public void setDamageIds(short[] damageIds) {
+        this.damageIds = damageIds;
+    }
+
+    public int[] getQuantities() {
+        return quantities;
+    }
+
+    public void setQuantities(int[] quantities) {
+        this.quantities = quantities;
+    }
+
+    public int[] getTypeIds() {
+        return typeIds;
+    }
+
+    public void setTypeIds(int[] typeIds) {
+        this.typeIds = typeIds;
     }
 }
