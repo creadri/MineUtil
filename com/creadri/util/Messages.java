@@ -6,17 +6,18 @@ package com.creadri.util;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.config.Configuration;
+import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.file.FileConfiguration;
 
 /**
  *
  * @author creadri
  */
 public class Messages {
-    Configuration configuration;
+    FileConfiguration configuration;
     JavaPlugin plugin;
 
-    public Messages(JavaPlugin plugin, Configuration configuration) {
+    public Messages(JavaPlugin plugin, FileConfiguration configuration) {
         this.configuration = configuration;
         this.plugin = plugin;
     }
@@ -25,7 +26,7 @@ public class Messages {
         return configuration;
     }
 
-    public void setConfiguration(Configuration configuration) {
+    public void setConfiguration(FileConfiguration configuration) {
         this.configuration = configuration;
     }
     
