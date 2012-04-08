@@ -6,7 +6,7 @@ package com.creadri.util;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.config.Configuration;
+import org.bukkit.configuration.Configuration;
 
 /**
  *
